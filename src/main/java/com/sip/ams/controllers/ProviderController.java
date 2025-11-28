@@ -23,7 +23,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/providers")
-@CrossOrigin("*")
 public class ProviderController {
 	@Autowired
 	ProviderService providerService;

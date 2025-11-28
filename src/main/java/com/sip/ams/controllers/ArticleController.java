@@ -28,7 +28,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("articles")
-@CrossOrigin("*")
 public class ArticleController {
 
 	@Autowired // IOC = Inversion of controle, cad Injection dépendences
