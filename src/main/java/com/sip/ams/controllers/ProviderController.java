@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sip.ams.services.ProviderService;
 
@@ -19,6 +21,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import com.sip.ams.entities.Provider;
+
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -49,9 +53,19 @@ public class ProviderController {
 			@ApiResponse(responseCode = "201", description = "Insertion avec succès"),
 			@ApiResponse(responseCode = "500", description = "Problème lors de l'insertion") })
 	
-	
+	/*
 	public ResponseEntity<Provider> saveProvider(@RequestBody Provider p) {
 		return new ResponseEntity<>(this.providerService.saveProvider(p), HttpStatus.CREATED);
+	}
+	*/
+	public Provider create(@RequestParam(name="imageFile") MultipartFile file,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email, 
+			@RequestParam("address") String address
+			//@RequestParam("imageName") String imageName
+			) throws IOException
+	{
+		return providerService.saveProvider(file,name,email,address);
 	}
 	
 	@Operation(summary = "Recherche d'un provider par son id")

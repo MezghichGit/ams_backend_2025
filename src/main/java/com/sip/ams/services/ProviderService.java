@@ -10,7 +10,7 @@ public interface ProviderService {
 
 	public List<Provider> getAllProviders();
 	public Provider saveProvider(Provider provider);
-	//public Provider saveProvider(MultipartFile file,String name,String email,String address);
+	public Provider saveProvider(MultipartFile file,String name,String email,String address);
 	public Optional<Provider> getProviderById(int id);
 	public void deleteProviderById(int id);
 }
